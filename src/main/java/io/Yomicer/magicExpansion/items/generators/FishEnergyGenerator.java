@@ -47,9 +47,9 @@ public class FishEnergyGenerator extends MenuBlock implements EnergyNetProvider,
 
     // 1. 定义可扩展的鱼能量产出表（集中管理，易扩展）
     private final Map<String, Integer> FISH_POWER_MAP = new LinkedHashMap<>() {{
-        put("MYSTIC_EEL",     50000);  // 神秘鳗鱼：高能量
-        put("XueFish",        200);    // 雪鱼：低能量
-        put("GlowStoneDustFish",      3000);    // 雪鱼：低能量
+        put("MYSTIC_EEL",     5000);  // 神秘鳗鱼：高能量
+        put("XueFish",        20);    // 雪鱼：低能量
+        put("GlowStoneDustFish",      300);    // 雪鱼：低能量
 
     }};
     // ✅ 鱼类型 -> 显示用的桶材质
