@@ -155,13 +155,13 @@ public class TemplateMachine extends AbstractElectricRecipeMachine {
 
         if (maxedSlots == getOutputSlots().length) { return null; }
 
-        Map<Integer, Integer> found = new HashMap<>();
+        Map<Integer, ItemStack> found = new HashMap<>();
 
         for (MachineRecipe recipe : recipes) {
             for (ItemStack input : recipe.getInput()) {
                 for (int slot : getInputSlots()) {
                     if (SlimefunUtils.isItemSimilar(inv.get(slot), input, true)) {
-                        found.put(slot, input.getAmount());
+                        found.put(slot, input);
                         break;
                     }
                 }
@@ -172,22 +172,42 @@ public class TemplateMachine extends AbstractElectricRecipeMachine {
                     return null;
                 }
 
+                boolean canConsume = true;
+                for (Map.Entry<Integer, ItemStack> entry : found.entrySet()) {
+                    int slot = entry.getKey();
+                    ItemStack expected = entry.getValue();
+                    ItemStack current = menu.getItemInSlot(slot);
+
+                    if (current == null
+                        || expected == null
+                        || !SlimefunUtils.isItemSimilar(current, expected, true)
+                        || current.getAmount() < expected.getAmount()) {
+                        canConsume = false;
+                        break;
+                    }
+                }
+
+                if (!canConsume) {
+                    found.clear();
+                    continue;
+                }
+
                 // 找出第一个输入物品对应的槽位
                 ItemStack firstInput = recipe.getInput()[0];
                 Integer firstSlotToSkip = null;
-                for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
-                    ItemStack current = inv.get(entry.getKey());
-                    if (SlimefunUtils.isItemSimilar(current, firstInput, true)) {
+                for (Map.Entry<Integer, ItemStack> entry : found.entrySet()) {
+                    ItemStack expected = entry.getValue();
+                    if (SlimefunUtils.isItemSimilar(expected, firstInput, true)) {
                         firstSlotToSkip = entry.getKey();
                         break;
                     }
                 }
 
-                for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
+                for (Map.Entry<Integer, ItemStack> entry : found.entrySet()) {
                     if (entry.getKey().equals(firstSlotToSkip)) {
                         continue; // 不消耗第一个输入物品
                     }
-                    menu.consumeItem(entry.getKey(), entry.getValue());
+                    menu.consumeItem(entry.getKey(), entry.getValue().getAmount());
                 }
 
                 return recipe;
