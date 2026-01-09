@@ -685,10 +685,10 @@ public enum Fish {
             if (percent == 1){
                 return MAX_WEIGHT_FISH;  //满重量
             }
-            else if (percent > 0.93) {
-                return SUPER_RARE_FISH;  // 最重的 7% → 超级稀有
+            else if (percent > 0.95) {
+                return SUPER_RARE_FISH;  // 最重的 5% → 超级稀有
             } else if (percent > 0.85) {
-                return RARE_FISH;        // 中间的 8% → 稀有鱼
+                return RARE_FISH;        // 中间的 10% → 稀有鱼
             } else {
                 return COMMON_FISH;      // 最轻的 85% → 普通鱼
             }
