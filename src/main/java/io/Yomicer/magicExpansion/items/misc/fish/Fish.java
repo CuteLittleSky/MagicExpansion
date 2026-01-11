@@ -511,12 +511,12 @@ public enum Fish {
     ),
 
 
-    MYSTIC_EEL(Rarity.EPIC.colorCode+"裸背电鳗", 2.0, 21.0, Rarity.EPIC,
+    MYSTIC_EEL(Rarity.EPIC.colorCode+"裸背电鳗", 2.0, 18.0, Rarity.EPIC,
             ColorGradient.getGradientName("深海中的幽影。"),
             ColorGradient.getGradientName("散发着微弱的蓝光。"),
             ColorGradient.getGradientName("没人知道它来自何方。"),
             ColorGradient.getGradientName("可产生高达600伏的电压和1安培的电流。"),
-            ColorGradient.getGradientName("裸背电鳗体重大多都在 2 - 21 kg之间。"),
+            ColorGradient.getGradientName("裸背电鳗体重大多都在 2 - 18 kg之间。"),
             ColorGradient.getGradientName("[特殊作用]可用于发电")
     );
 
@@ -687,8 +687,8 @@ public enum Fish {
             }
             else if (percent > 0.95) {
                 return SUPER_RARE_FISH;  // 最重的 5% → 超级稀有
-            } else if (percent > 0.85) {
-                return RARE_FISH;        // 中间的 10% → 稀有鱼
+            } else if (percent > 0.90) {
+                return RARE_FISH;        // 中间的 5% → 稀有鱼
             } else {
                 return COMMON_FISH;      // 最轻的 85% → 普通鱼
             }
