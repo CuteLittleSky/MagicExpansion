@@ -86,8 +86,6 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
 //        put("CopperFish", new ItemStack(Material.COPPER_INGOT));
 //        // 🟠 赤脉鱼 → 红石
 //        put("RedstoneFish", new ItemStack(Material.REDSTONE));
-//        // ⚔️ 狱铸鱼 → 下界合金锭
-//        put("NetheriteFish", new ItemStack(Material.NETHERITE_INGOT));
 //        // ⚔️ 灯笼鱼 → 萤石粉
 //        put("GlowStoneDustFish", new ItemStack(Material.GLOWSTONE_DUST));
 //        // ⚔️ 塑灵鱼 → 塑料纸
@@ -107,8 +105,6 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
 //        // ⚔️ 酸晶鱼 → 硅
 //        put("SiliconFish", SlimefunItems.SILICON);
 //
-//        // 【合金灵鱼】用于生产：强化合金锭
-//        put("ReinforcedAlloyFish", SlimefunItems.REINFORCED_ALLOY_INGOT);
 //
 //        // 【硬化灵鱼】用于生产：硬化金属
 //        put("HardenedMetalFish", SlimefunItems.HARDENED_METAL_INGOT);

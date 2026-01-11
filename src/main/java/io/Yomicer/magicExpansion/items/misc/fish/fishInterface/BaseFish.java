@@ -54,7 +54,6 @@ public class BaseFish {
     public static final BaseFish GoldFish = of(Fish.GoldFish);
     public static final BaseFish CopperFish = of(Fish.CopperFish);
     public static final BaseFish RedstoneFish = of(Fish.RedstoneFish);
-    public static final BaseFish NetheriteFish = of(Fish.NetheriteFish);
     public static final BaseFish GlowStoneDustFish = of(Fish.GlowStoneDustFish);
     public static final BaseFish ShuLingYu = of(Fish.ShuLingYu);
     public static final BaseFish UraniumFish = of(Fish.UraniumFish);
@@ -67,7 +66,6 @@ public class BaseFish {
 
 
     //合金锭鱼
-    public static final BaseFish ReinforcedAlloyFish = of(Fish.ReinforcedAlloyFish);
     public static final BaseFish HardenedMetalFish = of(Fish.HardenedMetalFish);
     public static final BaseFish DamascusSoulFish = of(Fish.DamascusSoulFish);
     public static final BaseFish SteelSoulFish = of(Fish.SteelSoulFish);

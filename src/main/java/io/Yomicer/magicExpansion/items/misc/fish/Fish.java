@@ -195,15 +195,6 @@ public enum Fish {
             ColorGradient.getGradientName("脉动鱼体重多在 1 - 64 kg 之间，脉冲频率越高，红石纯度越佳。"),
             ColorGradient.getGradientName("「特殊作用」可生产：红石粉")
     ),
-    // 【NetheriteFish】用于生产：下界合金锭（Netherite Ingot）
-    NetheriteFish(Rarity.RARE.colorCode + "狱铸鱼", 1.0, 64.0, Rarity.RARE,
-            ColorGradient.getGradientName("由下界烈焰与远古合金融合而成，周身缠绕黑焰。"),
-            ColorGradient.getGradientName("可在改良型生态熔炉缸中稳定生成下界合金锭。"),
-            ColorGradient.getGradientName("免疫火焰与爆炸，是顶级装备材料的唯一活体来源。"),
-            ColorGradient.getGradientName("传说中狱铸鱼体重恒定为 64 kg，因其已超越凡俗衡量。"),
-            ColorGradient.getGradientName("但是绝大多数狱铸鱼体重都在 1 - 64 kg 之间。"),
-            ColorGradient.getGradientName("「特殊作用」可生产：下界合金锭")
-    ),
     // 【GlowStoneFish】用于生产：萤石粉（Glowstone Dust）
     GlowStoneDustFish(Rarity.RARE.colorCode + "灯笼鱼", 1.0, 64.0, Rarity.RARE,
             ColorGradient.getGradientName("体内悬浮着微型发光菌群，如深海中的移动星辰。"),
@@ -284,16 +275,6 @@ public enum Fish {
 
 
     //【合金锭鱼】
-
-    // 【合金灵鱼】用于生产：强化合金锭
-    ReinforcedAlloyFish(Rarity.EPIC.colorCode + "强化灵鱼", 1.0, 64.0, Rarity.EPIC,
-            ColorGradient.getGradientName("游走于高压反应堆与强化能量场之间，以辐射淬炼与结构应力为食。"),
-            ColorGradient.getGradientName("躯体如多层复合装甲，表面浮现出暗红与银灰交织的强化纹路。"),
-            ColorGradient.getGradientName("其脊骨凝结成‘强化合金锭’，是未来科技的核心基材。"),
-            ColorGradient.getGradientName("需用魔法钓竿垂钓，否则灵鱼自毁，锭核崩解。"),
-            ColorGradient.getGradientName("强化灵鱼体重多在 1 - 64 kg 之间，越重者结构越稳定。"),
-            ColorGradient.getGradientName("「特殊作用」可生产：强化合金锭")
-    ),
 
     // 【硬化灵鱼】用于生产：硬化金属
     HardenedMetalFish(Rarity.EPIC.colorCode + "硬化灵鱼", 1.0, 64.0, Rarity.EPIC,

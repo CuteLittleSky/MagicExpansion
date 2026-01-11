@@ -158,8 +158,8 @@ public class FishKeys {
                         Fish.EmeraldFish, Fish.LapisFish,
                         Fish.DiamondFish, Fish.QuartzFish,
                         Fish.AmethystFish, Fish.IronFish,
-                        Fish.GoldFish, Fish.CopperFish,
-                        Fish.NetheriteFish,Fish.GlowStoneDustFish,
+                    Fish.GoldFish, Fish.CopperFish,
+                    Fish.GlowStoneDustFish,
                         Fish.RedstoneFish);
             case RARE_POOL_DUST:
                 // 稀有矿粉鱼池：包含所有可产出矿粉资源的稀有鱼种
@@ -183,7 +183,7 @@ public class FishKeys {
 
                         );
             case EPIC_POOL_ALLOY_INGOT:
-                return Arrays.asList(ReinforcedAlloyFish,
+                return Arrays.asList(
                         HardenedMetalFish, DamascusSoulFish,SteelSoulFish,
                         BronzeAncientFish, HardlightAluFish, SilverCopperFish,
                         BrassResonanceFish, AluminumBrassFish, AluminumBronzeFish,
