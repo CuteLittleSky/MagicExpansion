@@ -47,7 +47,7 @@ import static io.Yomicer.magicExpansion.utils.Utils.doGlow;
 public class FishOutputMachineEasy extends MenuBlock implements EnergyNetComponent, RecipeDisplayItem {
 
     private final int Capacity;
-    public static final int ENERGY_CONSUMPTION = 260;
+    public static final int ENERGY_CONSUMPTION = 657;
     private static final int FishSlot = 49;
     private static final int VoidTouchSlot = 50;
     private static final NamespacedKey KEY_X = new NamespacedKey(MagicExpansion.getInstance(), "touch_x");
