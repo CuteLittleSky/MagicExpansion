@@ -76,7 +76,7 @@ public class WindElf extends SimpleSlimefunItem<ItemUseHandler> implements NotPl
         mob.setMetadata("magicMobType", new FixedMetadataValue(MagicExpansion.getInstance(), "WindElf"));
         mob.setMetadata("isInvincibleWindElf", new FixedMetadataValue(MagicExpansion.getInstance(), false)); // 设置无敌元数据
         // 调整最大生命值并设置初始血量
-        double maxHealth = 200.0; // 自定义最大生命值
+        double maxHealth = 300.0; // 自定义最大生命值
         mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
         mob.setHealth(maxHealth); // 设置初始血量为最大生命值
 

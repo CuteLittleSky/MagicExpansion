@@ -493,7 +493,6 @@ public class FishingGuideMenu {
                 items.add(FishManager.getFishItemWithLore(BaseFish.LapisFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.DiamondFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.QuartzFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.AmethystFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.IronFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.GoldFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.CopperFish,"",getGradientName("咬钩喜好：魔法鱼饵·混合矿物质")));
@@ -507,7 +506,6 @@ public class FishingGuideMenu {
                 break;
             case "epic_fish":
                 items.add(new CustomItemStack(Material.COD,getGradientName("关于鱼群喜好"),getGradientName("喜好只是这种鱼更喜欢这种鱼饵"),getGradientName("其他鱼饵也有一定概率钓到这种鱼"),getGradientName("当然也有可能根本钓不到")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.FoamCrystalFish,"",getGradientName("咬钩喜好：基础魔法饵料"),getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.BlackDiamondFish,"",getGradientName("咬钩喜好：基础魔法饵料"),getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.EnchantedBottleFish,"",getGradientName("咬钩喜好：基础魔法饵料"),getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.MYSTIC_EEL,"",getGradientName("咬钩喜好：任意鱼饵"),getGradientName("青睐：更强大的魔法鱼竿")));
@@ -522,15 +520,11 @@ public class FishingGuideMenu {
                 items.add(FishManager.getFishItemWithLore(BaseFish.AluminumBrassFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.AluminumBronzeFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.CorinthianBronzeFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.SolderFlowFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.NickelSpiritFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.CobaltFlameFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.SiliconIronFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.CarbonSoulFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 items.add(FishManager.getFishItemWithLore(BaseFish.GildedIronFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.RedstoneAlloyFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.NeptuniumShadowFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
-                items.add(FishManager.getFishItemWithLore(BaseFish.PlutoniumCoreFish, "", getGradientName("专属钓饵：魔法鱼饵·混合合金泥"), getGradientName("青睐：更强大的魔法鱼竿")));
                 break;
             case "legendary_fish":
                 items.add(new CustomItemStack(Material.COD,getGradientName("关于鱼群喜好"),getGradientName("喜好只是这种鱼更喜欢这种鱼饵"),getGradientName("其他鱼饵也有一定概率钓到这种鱼"),getGradientName("当然也有可能根本钓不到")));

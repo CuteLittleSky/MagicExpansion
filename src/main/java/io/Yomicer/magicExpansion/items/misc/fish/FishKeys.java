@@ -157,7 +157,7 @@ public class FishKeys {
                 return Arrays.asList(Fish.CoalFish,
                         Fish.EmeraldFish, Fish.LapisFish,
                         Fish.DiamondFish, Fish.QuartzFish,
-                        Fish.AmethystFish, Fish.IronFish,
+                        Fish.IronFish,
                     Fish.GoldFish, Fish.CopperFish,
                     Fish.GlowStoneDustFish,
                         Fish.RedstoneFish);
@@ -178,7 +178,7 @@ public class FishKeys {
                         );
             case EPIC_POOL_INDUSTRY:
                 // 稀有矿粉鱼池：包含所有可产出矿粉资源的稀有鱼种
-                return Arrays.asList(Fish.FoamCrystalFish,
+                return Arrays.asList(
                         Fish.BlackDiamondFish,Fish.EnchantedBottleFish
 
                         );
@@ -187,10 +187,9 @@ public class FishKeys {
                         HardenedMetalFish, DamascusSoulFish,SteelSoulFish,
                         BronzeAncientFish, HardlightAluFish, SilverCopperFish,
                         BrassResonanceFish, AluminumBrassFish, AluminumBronzeFish,
-                        CorinthianBronzeFish, SolderFlowFish, NickelSpiritFish,
+                        CorinthianBronzeFish, NickelSpiritFish,
                         CobaltFlameFish, SiliconIronFish, CarbonSoulFish,
-                        GildedIronFish, RedstoneAlloyFish, NeptuniumShadowFish,
-                        PlutoniumCoreFish
+                        GildedIronFish
                 );
             case EPIC:
                 return Arrays.asList(Fish.MYSTIC_EEL);

@@ -75,8 +75,6 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
         put("DiamondFish", new ItemStack(Material.DIAMOND));
         // 🔴 焰晶鱼 → 下界石英
         put("QuartzFish", new ItemStack(Material.QUARTZ));
-        // 🟣 震颤鱼 → 紫水晶碎片
-        put("AmethystFish", new ItemStack(Material.AMETHYST_SHARD));
         // ⚫ 铁核鱼 → 铁锭
         put("IronFish", new ItemStack(Material.IRON_INGOT));
         // 🟡 鎏核鱼 → 金锭
@@ -93,8 +91,6 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
         put("UraniumFish", SlimefunItems.URANIUM);
         // ⚔️ 油岩鱼 → 原油桶
         put("OilRockFish", SlimefunItems.OIL_BUCKET);
-        // ⚔️ 泡晶鱼 → 起泡锭
-        put("FoamCrystalFish", SlimefunItems.BLISTERING_INGOT_3);
         // ⚔️ 黑曜鱼 → 黑金刚石
         put("BlackDiamondFish", SlimefunItems.CARBONADO);
         // ⚔️ 灵咒鱼 → 附魔之瓶
@@ -134,9 +130,6 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
         // 【科林斯青铜灵鱼】用于生产：科林斯青铜锭
         put("CorinthianBronzeFish", SlimefunItems.CORINTHIAN_BRONZE_INGOT);
 
-        // 【焊锡灵鱼】用于生产：焊锡锭
-        put("SolderFlowFish", SlimefunItems.SOLDER_INGOT);
-
         // 【镍魄鱼】用于生产：镍锭
         put("NickelSpiritFish", SlimefunItems.NICKEL_INGOT);
 
@@ -151,19 +144,6 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
 
         // 【镀金灵鱼】用于生产：镀金铁锭
         put("GildedIronFish", SlimefunItems.GILDED_IRON);
-
-        // 【红石合金灵鱼】用于生产：红石合金锭
-        put("RedstoneAlloyFish", SlimefunItems.REDSTONE_ALLOY);
-
-        // 【镎影鱼】用于生产：镎
-        put("NeptuniumShadowFish", SlimefunItems.NEPTUNIUM);
-
-        // 【钚心鱼】用于生产：钚
-        put("PlutoniumCoreFish", SlimefunItems.PLUTONIUM);
-
-
-
-
 
     }};
 
@@ -191,15 +171,6 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
     protected void tick(Block block) {
         BlockMenu inv = StorageCacheUtils.getMenu(block.getLocation());
 
-        if(inv != null && inv.hasViewer()) {
-            if (getCharge(block.getLocation()) < getEnergyConsumption()) {
-                inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
-                                getGradientName("请检查电力供应是否充足")),
-                        (player1, slot, item, action) -> false);
-                return;
-            }
-        }
-
         ItemStack fish = null;
         ItemMeta meta = null;
         if (inv != null) {
@@ -212,12 +183,14 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
             meta = fish.getItemMeta();
         }
         ItemStack outItems = null;
+        Double weight = null;
+        int energyCost = ENERGY_CONSUMPTION;
         if(meta != null) {
 
             PersistentDataContainer pdc = meta.getPersistentDataContainer();
             // 读取PDC数据
             String fishType = pdc.get(FishKeys.FISH_TYPE, PersistentDataType.STRING);
-            Double weight = pdc.get(FishKeys.FISH_WEIGHT, PersistentDataType.DOUBLE);
+            weight = pdc.get(FishKeys.FISH_WEIGHT, PersistentDataType.DOUBLE);
             String weightRarityName = pdc.get(FishKeys.FISH_WEIGHT_RARITY, PersistentDataType.STRING);
 
             // 基础校验
@@ -241,22 +214,34 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
 
                     baseOutput.setAmount((int) amount);
                     outItems = baseOutput;
+                    energyCost = calculateEnergyCost(weight);
 
                 }
             }
 
         }
 
+        if(inv != null && inv.hasViewer()) {
+            if (getCharge(block.getLocation()) < energyCost) {
+                inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
+                                getGradientName("请检查电力供应是否充足")),
+                        (player1, slot, item, action) -> false);
+                return;
+            }
+        }
+
         if (inv != null && inv.hasViewer() && outItems != null) {
             inv.addItem(48, new CustomItemStack(doGlow(Material.SOUL_LANTERN), getGradientName("⚡机器正在运行⚡"),
                             getGradientName("本机器会源源不断地生产，即使输出槽已经填满了"),
                             getGradientName("当前产出: ")+ ItemStackHelper.getDisplayName(outItems),
-                            getGradientName("当前效率: ")+ "§r" +getRandomGradientName(calculateRealAmount(outItems) + "个/tick")),
+                            getGradientName("当前效率: ")+ "§r" +getRandomGradientName(calculateRealAmount(outItems) + "个/tick"),
+                            getGradientName("当前耗电: ")+ "§r" +getRandomGradientName(energyCost + " J/t")),
                     (player1, slot, item, action) -> false);
         } else {
             if (inv != null && inv.hasViewer()) {
                 inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
-                                getGradientName("请检查鱼种是否符合")),
+                                getGradientName("请检查鱼种是否符合"),
+                                getGradientName("需要耗电: ")+ "§r" +getRandomGradientName((energyCost) + " J/t")),
                         (player1, slot, item, action) -> false);
             }
         }
@@ -286,8 +271,8 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
 
                             if (sfItem != null) {
                                 if (sfItem instanceof CargoCoreMore) {
-                                    if (pushItemToCargoCore(targetLocation, outItems)){
-                                        removeCharge(block.getLocation(), getEnergyConsumption());
+                                            if (pushItemToCargoCore(targetLocation, outItems)){
+                                                removeCharge(block.getLocation(), energyCost);
                                         return;
                                     }
                                 }
@@ -299,7 +284,7 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
         }
 
         if (outItems != null && inv != null) {
-            removeCharge(block.getLocation(), getEnergyConsumption());
+            removeCharge(block.getLocation(), energyCost);
             pushAllItems(inv,outItems, getOutputSlots());
         }
 
@@ -461,6 +446,15 @@ public class FishOutputMachine extends MenuBlock implements EnergyNetComponent, 
 
     public int getEnergyConsumption() {
         return ENERGY_CONSUMPTION;
+    }
+
+    private int calculateEnergyCost(double weight) {
+        double safeWeight = weight <= 0 ? 1.0 : weight;
+        double cost = ENERGY_CONSUMPTION * safeWeight;
+        if (cost > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+        return (int) Math.ceil(cost);
     }
 
 

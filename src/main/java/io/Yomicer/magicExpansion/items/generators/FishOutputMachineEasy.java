@@ -193,15 +193,6 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
     protected void tick(Block block) {
         BlockMenu inv = StorageCacheUtils.getMenu(block.getLocation());
 
-        if(inv != null && inv.hasViewer()) {
-            if (getCharge(block.getLocation()) < getEnergyConsumption()) {
-                inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
-                                getGradientName("请检查电力供应是否充足")),
-                        (player1, slot, item, action) -> false);
-                return;
-            }
-        }
-
         ItemStack fish = null;
         ItemMeta meta = null;
         if (inv != null) {
@@ -214,12 +205,14 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
             meta = fish.getItemMeta();
         }
         ItemStack outItems = null;
+        Double weight = null;
+        int energyCost = ENERGY_CONSUMPTION;
         if(meta != null) {
 
             PersistentDataContainer pdc = meta.getPersistentDataContainer();
             // 读取PDC数据
             String fishType = pdc.get(FishKeys.FISH_TYPE, PersistentDataType.STRING);
-            Double weight = pdc.get(FishKeys.FISH_WEIGHT, PersistentDataType.DOUBLE);
+            weight = pdc.get(FishKeys.FISH_WEIGHT, PersistentDataType.DOUBLE);
             String weightRarityName = pdc.get(FishKeys.FISH_WEIGHT_RARITY, PersistentDataType.STRING);
 
             // 基础校验
@@ -246,21 +239,33 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
 
                     baseOutput.setAmount((int) amount);
                     outItems = baseOutput;
+                    energyCost = calculateEnergyCost(weight);
 
                 }
             }
 
         }
+
+        if(inv != null && inv.hasViewer()) {
+            if (getCharge(block.getLocation()) < energyCost) {
+                inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
+                                getGradientName("请检查电力供应是否充足")),
+                        (player1, slot, item, action) -> false);
+                return;
+            }
+        }
         if (inv != null && inv.hasViewer() && outItems != null) {
             inv.addItem(48, new CustomItemStack(doGlow(Material.SOUL_LANTERN), getGradientName("⚡机器正在运行⚡"),
                             getGradientName("本机器会源源不断地生产，即使输出槽已经填满了"),
                             getGradientName("当前产出: ")+ ItemStackHelper.getDisplayName(outItems),
-                            getGradientName("当前效率: ")+ "§r" +getRandomGradientName(calculateRealAmount(outItems) + "个/tick")),
+                            getGradientName("当前效率: ")+ "§r" +getRandomGradientName(calculateRealAmount(outItems) + "个/tick"),
+                            getGradientName("当前耗电: ")+ "§r" +getRandomGradientName(energyCost + " J/t")),
                     (player1, slot, item, action) -> false);
         } else {
             if (inv != null && inv.hasViewer()) {
                 inv.addItem(48, new CustomItemStack(doGlow(Material.LANTERN), getGradientName("⚡机器停止运行⚡"),
-                                getGradientName("请检查鱼种是否符合")),
+                                getGradientName("请检查鱼种是否符合"),
+                                getGradientName("需要耗电: ")+ "§r" +getRandomGradientName((energyCost) + " J/t")),
                         (player1, slot, item, action) -> false);
             }
         }
@@ -290,8 +295,8 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
 
                             if (sfItem != null) {
                                 if (sfItem instanceof CargoCoreMore) {
-                                    if (pushItemToCargoCore(targetLocation, outItems)){
-                                        removeCharge(block.getLocation(), getEnergyConsumption());
+                                            if (pushItemToCargoCore(targetLocation, outItems)){
+                                                removeCharge(block.getLocation(), energyCost);
                                         return;
                                     }
                                 }
@@ -303,7 +308,7 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
         }
 
         if (outItems != null && inv != null) {
-            removeCharge(block.getLocation(), getEnergyConsumption());
+            removeCharge(block.getLocation(), energyCost);
             pushAllItems(inv,outItems, getOutputSlots());
         }
 
@@ -465,6 +470,15 @@ public class FishOutputMachineEasy extends MenuBlock implements EnergyNetCompone
 
     public int getEnergyConsumption() {
         return ENERGY_CONSUMPTION;
+    }
+
+    private int calculateEnergyCost(double weight) {
+        double safeWeight = weight <= 0 ? 1.0 : weight;
+        double cost = ENERGY_CONSUMPTION * safeWeight;
+        if (cost > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+        return (int) Math.ceil(cost);
     }
 
 

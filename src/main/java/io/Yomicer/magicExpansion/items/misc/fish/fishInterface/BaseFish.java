@@ -49,7 +49,6 @@ public class BaseFish {
     public static final BaseFish LapisFish = of(Fish.LapisFish);
     public static final BaseFish DiamondFish = of(Fish.DiamondFish);
     public static final BaseFish QuartzFish = of(Fish.QuartzFish);
-    public static final BaseFish AmethystFish = of(Fish.AmethystFish);
     public static final BaseFish IronFish = of(Fish.IronFish);
     public static final BaseFish GoldFish = of(Fish.GoldFish);
     public static final BaseFish CopperFish = of(Fish.CopperFish);
@@ -58,7 +57,6 @@ public class BaseFish {
     public static final BaseFish ShuLingYu = of(Fish.ShuLingYu);
     public static final BaseFish UraniumFish = of(Fish.UraniumFish);
     public static final BaseFish OilRockFish = of(Fish.OilRockFish);
-    public static final BaseFish FoamCrystalFish = of(Fish.FoamCrystalFish);
     public static final BaseFish BlackDiamondFish = of(Fish.BlackDiamondFish);
     public static final BaseFish SulfateFish = of(Fish.SulfateFish);
     public static final BaseFish SiliconFish = of(Fish.SiliconFish);
@@ -76,15 +74,11 @@ public class BaseFish {
     public static final BaseFish AluminumBrassFish = of(Fish.AluminumBrassFish);
     public static final BaseFish AluminumBronzeFish = of(Fish.AluminumBronzeFish);
     public static final BaseFish CorinthianBronzeFish = of(Fish.CorinthianBronzeFish);
-    public static final BaseFish SolderFlowFish = of(Fish.SolderFlowFish);
     public static final BaseFish NickelSpiritFish = of(Fish.NickelSpiritFish);
     public static final BaseFish CobaltFlameFish = of(Fish.CobaltFlameFish);
     public static final BaseFish SiliconIronFish = of(Fish.SiliconIronFish);
     public static final BaseFish CarbonSoulFish = of(Fish.CarbonSoulFish);
     public static final BaseFish GildedIronFish = of(Fish.GildedIronFish);
-    public static final BaseFish RedstoneAlloyFish = of(Fish.RedstoneAlloyFish);
-    public static final BaseFish NeptuniumShadowFish = of(Fish.NeptuniumShadowFish);
-    public static final BaseFish PlutoniumCoreFish = of(Fish.PlutoniumCoreFish);
 
 
 
