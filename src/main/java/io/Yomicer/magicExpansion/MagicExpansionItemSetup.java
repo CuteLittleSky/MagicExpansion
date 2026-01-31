@@ -77,7 +77,7 @@ public final class MagicExpansionItemSetup {
 
     private static final ItemGroup magicexpansioncontribution = new SubItemGroup(
             new NamespacedKey(MagicExpansion.getInstance(), "contribution"), magicexpansion,
-            new CustomItemStack(doGlow(Material.COMMAND_BLOCK), getRandomGradientName("贡献")), 0
+            new CustomItemStack(doGlow(Material.COMMAND_BLOCK), ColorGradient.getGradientNameVer2("贡献")), 0
     );
 
     private static final ItemGroup magicexpansionresource = new SubItemGroup(
@@ -172,7 +172,19 @@ public final class MagicExpansionItemSetup {
             new NamespacedKey(MagicExpansion.getInstance(), "commemorate"), magicexpansion,
             new CustomItemStack(doGlow(Material.FIREWORK_ROCKET), ColorGradient.getRandomGradientName("纪念品")), 10
     );
+    public static final ItemGroup magicexpansionfood = new SubItemGroup(
+            new NamespacedKey(MagicExpansion.getInstance(), "food"), magicexpansion,
+            new CustomItemStack(doGlow(Material.CAKE), ColorGradient.getGradientNameVer2("美食")), 10
+    );
+    public static final ItemGroup magicexpansionfoodresource = new SubItemGroup(
+            new NamespacedKey(MagicExpansion.getInstance(), "foodresource"), magicexpansion,
+            new CustomItemStack(doGlow(Material.WHEAT), ColorGradient.getGradientNameVer2("食材原料")), 10
+    );
 
+    public static final ItemGroup magicexpansioncooperatecreate = new SubItemGroup(
+            new NamespacedKey(MagicExpansion.getInstance(), "cooperatecreate"), magicexpansion,
+            new CustomItemStack(CustomHead.getHead("7971e55df39a58faad05742d882e9a05ffa511a0c58e4f687777bb74614006eb"), ColorGradient.getGradientNameVer2("魔法2.0-共创")), 10
+    );
 
     private static final ItemGroup magicexpansionupdateinfo = new SubItemGroup(
             new NamespacedKey(MagicExpansion.getInstance(), "updateinfo"), magicexpansion,
@@ -299,6 +311,16 @@ public final class MagicExpansionItemSetup {
                 null, null, null
         }).register(plugin);
         new UnplaceableBlock(magicexpansioncontribution, MagicExpansionItems.QIZHIYI_TEST, RecipeType.NULL, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
+        new UnplaceableBlock(magicexpansioncontribution, MagicExpansionItems.KOMU_A, RecipeType.NULL, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
+        new UnplaceableBlock(magicexpansioncontribution, LENGSHANG_TEST, RecipeType.NULL, new ItemStack[] {
                 null, null, null,
                 null, null, null,
                 null, null, null
@@ -530,6 +552,21 @@ public final class MagicExpansionItemSetup {
                 null, null, null,
                 null, null, null
         }).register(plugin);
+        new UnplaceableBlock(magicexpansionupdateinfo, UPDATE_LOG_2026_01_23, SPECIAL_RECIPE_TYPE, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
+        new UnplaceableBlock(magicexpansionupdateinfo, UPDATE_LOG_2026_01_27, SPECIAL_RECIPE_TYPE, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
+        new UnplaceableBlock(magicexpansionupdateinfo, UPDATE_LOG_2026_01_28, SPECIAL_RECIPE_TYPE, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
 
 
 
@@ -544,14 +581,14 @@ public final class MagicExpansionItemSetup {
 
         //初级万能魔法合成材料
         new UnplaceableBlock(magicexpansionresourcedlc, MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                SlimefunItems.RAINBOW_GLAZED_TERRACOTTA, SlimefunItems.ANCIENT_PEDESTAL, SlimefunItems.RAINBOW_CONCRETE,
-                SlimefunItems.RAINBOW_GLASS_PANE, SlimefunItems.MAGIC_EYE_OF_ENDER, SlimefunItems.RAINBOW_GLASS,
-                SlimefunItems.RAINBOW_CLAY, SlimefunItems.ANCIENT_ALTAR, SlimefunItems.RAINBOW_WOOL
+                SlimefunItems.RAINBOW_WOOL, AMETHYST_SHARD, SlimefunItems.RAINBOW_WOOL,
+                AMETHYST_SHARD, SlimefunItems.MAGIC_EYE_OF_ENDER, AMETHYST_SHARD,
+                SlimefunItems.RAINBOW_WOOL, AMETHYST_SHARD, SlimefunItems.RAINBOW_WOOL
         }).register(plugin);
 
         //进阶万能魔法合成材料
         new UnplaceableBlock(magicexpansionresourcedlc, MagicExpansionItems.MAGIC_EXPANSION_TO_MAGIC_ITEM_ADVANCED, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                MagicExpansionItems.AMETHYST_SHARD, MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC, MagicExpansionItems.QUARTZ,
+                DIAMOND, MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC, MagicExpansionItems.QUARTZ,
                 MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC, MagicExpansionItems.ELEMENT_INGOT, MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC,
                 MagicExpansionItems.NETHERITE_INGOT, MAGIC_EXPANSION_TO_MAGIC_ITEM_BASIC, MagicExpansionItems.EMERALD
         }).register(plugin);
@@ -617,6 +654,14 @@ public final class MagicExpansionItemSetup {
                 PURE_ELEMENT_FIRE, PURE_FIVE_ELEMENT, COAL,
                 FIVE_ELEMENT_TOUCH_RIGHT_CLICK, MAGIC_EXPANSION_MAGIC_SUGAR_10, FIVE_ELEMENT_TOUCH,
                 COAL, PURE_FIVE_ELEMENT, PURE_ELEMENT_FIRE
+        }).register(plugin);
+
+
+        //生死簿
+        new ItemNameTag(magicexpansionspecialitem, MagicExpansionItems.ITEM_NAME_TAG, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+                new ItemStack(Material.WHITE_WOOL), new ItemStack(Material.NAME_TAG), null,
+                null, null, null,
+                null, null, null
         }).register(plugin);
 
 
@@ -1330,6 +1375,12 @@ public final class MagicExpansionItemSetup {
 
 
         //钓鱼说明
+        new UnplaceableBlock(magicexpansioncooperatecreate, COOPERATE_CREATION_INFO, RecipeType.NULL, new ItemStack[] {
+                null, null, null,
+                null, null, null,
+                null, null, null
+        }).register(plugin);
+        //钓鱼说明
         new UnplaceableBlock(magicexpansionfishing, FISHING_INFO, RecipeType.NULL, new ItemStack[] {
                 null, null, null,
                 null, null, null,
@@ -1566,6 +1617,7 @@ public final class MagicExpansionItemSetup {
                 null,new CustomItemStack(new ItemStack(Material.ENCHANTING_TABLE), "§x§E§8§4§2§3§D终极魔法祭坛","§a多方块结构","§b/mxalter guide获取相关配方书") ,null,
                 null, null,null
         }).register(plugin);
+
 
 
 
@@ -1867,12 +1919,12 @@ public final class MagicExpansionItemSetup {
 
         //跨年烟花·元旦
         new NewYearsDayFireworkYuanDan(magicexpansioncommemorate, NEW_YEARS_DAY_FIREWORK_YUAN_DAN, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                new ItemStack(Material.FIREWORK_ROCKET),MAGIC_EXPANSION_MAGIC_SUGAR_1,null,
+                new ItemStack(Material.GUNPOWDER),MAGIC_EXPANSION_MAGIC_SUGAR_1,null,
                 null, null, null,
                 null, null, null,
         }).register(plugin);
         new BigFireworksYuanDan(magicexpansioncommemorate, NEW_YEARS_DAY_FIREWORK_YUAN_DAN_2, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                new ItemStack(Material.FIREWORK_ROCKET),new ItemStack(Material.SUGAR),null,
+                new ItemStack(Material.GUNPOWDER),new ItemStack(Material.SUGAR),null,
                 null, null, null,
                 null, null, null,
         }).register(plugin);
@@ -2261,6 +2313,13 @@ public final class MagicExpansionItemSetup {
                 MagicExpansionItems.AMETHYST_SHARD,MagicExpansionItems.LIGHT_ENERGY_ALPHA,MagicExpansionItems.AMETHYST_SHARD,
                 MagicExpansionItems.OAK_PLANKS,MagicExpansionItems.INFINITY_FLINT_AND_STEEL,MagicExpansionItems.OAK_PLANKS
         },1314,260, EntityType.PHANTOM, "幻翼").register(plugin);
+
+        //rsc资源强转换
+        new ForceTwoToRsc(magicexpansionrscmagic, MagicExpansionItems.TWO_TO_MAGIC_GEO_MACHINE_FORCE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+                new ItemStack(Material.REDSTONE), new ItemStack(Material.REDSTONE), new ItemStack(Material.SUGAR),
+                new ItemStack(Material.REDSTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.SUGAR),
+                new ItemStack(Material.REDSTONE), new ItemStack(Material.SUGAR), new ItemStack(Material.SUGAR)
+        },1314,26).register(plugin);
 
 
 
